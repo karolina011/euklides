@@ -1,0 +1,86 @@
+
+  body {
+  font-family: 'montserrat', sans-serif;
+  text-align: center;
+  display: inline;
+  margin: 0 auto;
+  background-image: url(https://wallpapermemory.com/uploads/969/math-background-full-hd-1080p-300367.jpg);
+  
+  }
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 80px;
+    text-shadow: 3px 3px 5px black;
+    color: aliceblue;
+    transition: transform .4s;
+  }
+
+  h1:hover {
+    color: hsl(251, 42%, 40%);
+    transform: scale(0.9);
+  }
+
+  p {
+text-transform: uppercase;
+    text-shadow: 3px 3px 5px black;
+    color: aliceblue;
+    font-size: 20px;
+  }
+
+  textarea {
+      height: 50px;
+      width: 550px;
+      border-radius: 7px;
+      resize: none;
+
+  }
+
+  
+  #decrypt {
+    background-color: hsl(251, 42%, 40%);
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    color: aliceblue;
+    height: 50px;
+    font-size: 15pt;
+    font-weight: 900;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  #public {
+    background-color: hsl(251, 42%, 40%);
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    color: aliceblue;
+    height: 50px;
+    font-size: 15pt;
+    font-weight: 900;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    float: inline;
+  }
+
+  
+
+  input {
+    height: 50px;
+    width: 550px;
+    border-radius: 5px;
+    margin-top: -10px;
+    color: black;
+    font-size: 14pt;
+    font-weight: bold;
+  }

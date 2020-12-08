@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport"
+  content="width=device-width">
+ 
+ <title>Euklides</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <form>
+   <h1>Euklides</h1>
+
+   <div>
+    <input type="button" id="decrypt" 
+       value="Wylosuj e" 
+       onclick="randomStart();">
+   
+  </div>
+   <p id="titleId">Twoje e to :</p>
+
+   <div>
+    <textarea id="inputMessage" name="inputMessage" spellcheck="false" style="font-size: 20px;"></textarea>
+    
+     <div>
+
+   <div>
+    <input type="button" id="decrypt" 
+       value="Wylosuj p i q" 
+       onclick="randomStart();">
+   
+  </div>
+   <p id="titleId">Twoje p i q to :</p>
+
+   <div>
+    <textarea id="inputMessage" name="inputMessage" spellcheck="false" style="font-size: 20px;"></textarea>
+
+
+    
+     <div>
+    <input type="button" id="decrypt" 
+       value="Znajdź pare kluczy" 
+       
+       onclick="algorytmeuklidesa();">
+  </div>
+  
+  <div class="box"><p id="result" name ="result"></p></div>
+</div><br clear="both" />
+
+  <p>Klucz publiczny i Klucz prywatny</p>
+  <textarea class= "box1" id="inputMessage" name="inputMessage" spellcheck="false" style="font-size: 20px; width: 170px;"></textarea> 
+  <textarea class="box1" id="inputMessage" name="inputMessage" spellcheck="false" style="font-size: 20px; width: 170px;"></textarea>
+
+
+
+<div>
+  <input type="button" id="public" 
+     value="Zapisz klucze do pliku">
+ 
+</div>
+
+
+
+
+  </form>
+  <script src="main.js"></script>
+</body>
+</html>

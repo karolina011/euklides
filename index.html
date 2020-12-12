@@ -58,14 +58,46 @@
 
 
 
-    <div>
-      <input type="button" id="saveKeys"
-            value="Zapisz klucze do pliku"
-            onclick="saveKeys()"
-      >
+        <div>
+          <input type="button" id="saveKeys"
+                value="Zapisz klucze do pliku"
+                onclick="saveKeys()"
+          >
 
 
-    </div>
+        </div>
+
+       <div>
+           <input type="button" id="getKeysButton"
+                  value="Pobierz klucze"
+                  onclick="getKeys()"
+           >
+
+       </div><br><br>
+
+       <div>
+
+           <input type="button"
+                  value="Zaszyfruj zawartość pliku text.txt"
+                  onclick="encryptTextFileContent()"
+           ><br><br>
+
+           <input type="text" id="encryptedTextFromFileText" value="" placeholder="Tu pojawi się zawartość pliku text.txt po zaszyfrowaniu"/><br>
+
+       </div><br><br>
+
+
+       <div>
+
+           <input type="button"
+                  value="Odszyfruj zawartość pliku text.enc"
+                  onclick="decryptTextFileContent()"
+           ><br><br>
+
+           <input type="text" id="decryptedTextFromFileTextEnc" value="" placeholder="Tu pojawi się zawartość pliku text.txt po zaszyfrowaniu"/><br>
+
+       </div>
+
 
 </body>
 </html>

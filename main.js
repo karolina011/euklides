@@ -1,4 +1,53 @@
 
+function randomStart(){
+    document.getElementById("p").value = getRandomInt(1,1000000000);
+    document.getElementById("q").value = getRandomInt(1,1000000000);
+}
+function getRandomInt(min,max) { /* getting a random between given max and min values */
+    min = Math.ceil(min);
+    max = Math.ceil(max);
+    return Math.floor(Math.random()*(max-min))+min;
+}
+
+function getGCD(a,b) { /* getting the greatest common divisor */
+    var tmp;
+    while (b !== 0) {
+        tmp = b;
+        b = a%b;
+        a = tmp;
+    }
+    return a;
+}
+
+function getKeys(){
+    let p = document.getElementById("p").value;
+    let q = document.getElementById("q").value;
+    let x = (p-1)*(q-1);
+    let i = 2;
+    let e = -1;
+    while(i!=1){
+        e = getRandomInt(1,1000000000);
+        i = getGCD(e,x);
+    }
+    if(e!=-1){
+        let d = euclidAdvanced(e,x)[0];
+        let n = p*q;
+        document.getElementById("publicKey").value = d+",\n"+n;
+        document.getElementById("privateKey").value = e+",\n"+n;
+    }
+
+    function euclidAdvanced(a,b){
+        if (b == 0) {
+            return [1, 0, a];
+        }
+
+        temp = euclidAdvanced(b, a % b);
+        x = temp[0];
+        y = temp[1];
+        d = temp[2];
+        return [y, x-y*Math.floor(a/b), d];
+    }
+}
 
 function saveKeys()
 {
@@ -17,7 +66,7 @@ function saveKeys()
 
 }
 
-function getKeys()
+function getKeysFromFile()
 {
 
     var xhttp = new XMLHttpRequest();

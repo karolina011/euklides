@@ -15,39 +15,35 @@
     </script>
 </head>
 <body>
-       <h1>Euklides</h1>
+<h1>Euklides</h1>
 
-       <div>
-        <input type="button" id="decrypt"
-           value="Wylosuj e"
-           onclick="randomStart();">
-       </div>
-      <p id="titleId">Twoje e to :</p>
-
-       <div>
-        <textarea id="inputMessage" name="inputMessage" spellcheck="false" style="font-size: 20px;"></textarea>
-
-           </div>
-
-       <div>
-        <input type="button" id="decrypt"
+<div>
+    <input type="button" id="decrypt"
            value="Wylosuj p i q"
            onclick="randomStart();">
 
-      </div>
-       <p id="titleId">Twoje p i q to :</p>
+</div>
+<p id="titleId">Twoje p to :</p>
 
-       <div>
-        <textarea id="inputMessage" name="inputMessage" spellcheck="false" style="font-size: 20px;"></textarea>
+<div>
+    <textarea id="p" name="inputMessage" spellcheck="false" style="font-size: 20px;"></textarea>
+
+    <div>
+
+
+        <p id="titleId">Twoje q:</p>
+
+        <div>
+            <textarea id="q" name="inputMessage" spellcheck="false" style="font-size: 20px;"></textarea>
 
 
 
-         <div>
-        <input type="button" id="decrypt"
-           value="Znajdź pare kluczy"
+            <div>
+                <input type="button" id="decrypt"
+                       value="Znajdź pare kluczy"
 
-           onclick="algorytmeuklidesa();">
-      </div>
+                       onclick="getKeys();">
+            </div>
 
       <div class="box"><p id="result" name ="result"></p></div>
     </div><br clear="both" />
@@ -70,7 +66,7 @@
        <div>
            <input type="button" id="getKeysButton"
                   value="Pobierz klucze"
-                  onclick="getKeys()"
+                  onclick="getKeysFromFile()"
            >
 
        </div><br><br>

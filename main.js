@@ -74,8 +74,8 @@ function getKeysFromFile()
         if (this.readyState == 4 && this.status == 200) {
             let response = JSON.parse(this.responseText);
 
-            document.getElementById("publicKey").value  = response.publicKey;
-            document.getElementById("privateKey").value = response.privateKey;
+            document.getElementById("downloadedPubKey").value  = response.publicKey;
+            document.getElementById("downloadedPrivKey").value = response.privateKey;
         }
     };
     xhttp.open("GET", "fileService.php?action=getKeys", true);
@@ -115,9 +115,14 @@ function encryptTextFileContent() {
         if (this.readyState == 4 && this.status == 200) {
 
             let response = JSON.parse(this.responseText);
-            let textFileContent = response.fileContent;
+            console.log(response);
+            let text = response.fileContent;
+            let publicKey = document.getElementById("downloadedPubKey").value;
 
-            let encryptedText = encrypt(textFileContent);
+            console.log(text);
+            console.log(publicKey);
+            let encryptedText = encrypt(text, publicKey);
+
 
             document.getElementById("encryptedTextFromFileText").value = encryptedText;
 
@@ -135,9 +140,13 @@ function decryptTextFileContent()
         if (this.readyState == 4 && this.status == 200) {
 
             let response = JSON.parse(this.responseText);
-            let textFileContent = response.fileContent;
+            let encryptedText = response.fileContent;
+            let privateKey = document.getElementById("downloadedPrivKey").value;
 
-            let decryptedText = decrypt(textFileContent);
+            console.log(encryptedText);
+            console.log(privateKey);
+
+            let decryptedText = decrypt(encryptedText, privateKey);
 
             document.getElementById("decryptedTextFromFileTextEnc").value = decryptedText;
 
@@ -148,13 +157,13 @@ function decryptTextFileContent()
     xhttp.send();
 }
 
-function encrypt(textFileContent){
+function encrypt(textFileContent, publicKey){
     //TODO
 
     return 'zaszyfrowanyText';
 }
 
-function decrypt(encryptedText){
+function decrypt(encryptedText, privateKey){
     //TODO
 
     return 'odszyfrowanyText';

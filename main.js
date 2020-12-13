@@ -115,12 +115,9 @@ function encryptTextFileContent() {
         if (this.readyState == 4 && this.status == 200) {
 
             let response = JSON.parse(this.responseText);
-            console.log(response);
             let text = response.fileContent;
             let publicKey = document.getElementById("downloadedPubKey").value;
 
-            console.log(text);
-            console.log(publicKey);
             let encryptedText = encrypt(text, publicKey);
 
 
@@ -143,9 +140,6 @@ function decryptTextFileContent()
             let encryptedText = response.fileContent;
             let privateKey = document.getElementById("downloadedPrivKey").value;
 
-            console.log(encryptedText);
-            console.log(privateKey);
-
             let decryptedText = decrypt(encryptedText, privateKey);
 
             document.getElementById("decryptedTextFromFileTextEnc").value = decryptedText;
@@ -157,14 +151,73 @@ function decryptTextFileContent()
     xhttp.send();
 }
 
-function encrypt(textFileContent, publicKey){
-    //TODO
-
-    return 'zaszyfrowanyText';
+function decrypt(txt,key){
+    let result = [];
+    let message = txt.split(",");
+    let keyPair = key.split(",");
+    let decodedArray = [];
+    let separatedArray = [];
+    message.forEach(m => {
+        decodedArray.push(normalizeAscii(getPower(parseInt(m,10),parseInt(keyPair[0], 10),parseInt(keyPair[1],10))));
+    });
+    console.log("ascii decoded "+decodedArray)
+    decodedArray.forEach(el => {
+        separatedArray.push(el.substring(0, 3));
+        separatedArray.push(el.substring(3));
+    });
+    if(separatedArray[separatedArray.length -1]==="000"){
+        separatedArray.pop();
+    }
+    separatedArray.forEach(s => {
+        result.push(String.fromCharCode(parseInt(s,10)));
+    });
+    return result.join("");
 }
 
-function decrypt(encryptedText, privateKey){
-    //TODO
+function converAscii(a) {
+    if (a < 100) {
+        return "0" + a;
+    }
+    return a + "";
+}
 
-    return 'odszyfrowanyText';
+function getPower(a,b,p) {
+    if (b == 1)
+     return a%p;
+    else {
+     x = getPower(a,Math.floor(b/2),p);
+     if (b%2 == 0)
+      return (x*x)%p;
+     else
+     {
+         return (((x*x)%p)*a)%p;
+     }
+    }
+}
+
+function normalizeAscii(c) {
+    if (c.length == 5) {
+        c = "0" + c;
+    }
+    return c+"";
+}
+function encrypt(txt,key) {
+    let result = [];
+    let keyPair = key.split(",");
+    let charArray = txt.split("");
+    let asciiArray = [];
+    charArray.forEach(char => {
+        asciiArray.push(converAscii(char.charCodeAt(0)));
+    });
+    console.log("ascii "+ asciiArray)
+    if (txt.length % 2 != 0) {
+        asciiArray.push("000");
+    }
+    for (let i = 0; i < asciiArray.length; i += 2) {
+       let merged = asciiArray[i] + asciiArray[i + 1];
+       console.log(parseInt(merged,10)+" "+ parseInt(keyPair[0], 10)+" "+ parseInt(keyPair[1],10));
+       result.push(getPower(parseInt(merged,10), parseInt(keyPair[0], 10), parseInt(keyPair[1],10)));
+    }
+    console.log("crypt "+result.join(","))
+    return result.join(",");
 }
